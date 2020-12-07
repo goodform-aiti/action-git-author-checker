@@ -8,12 +8,10 @@ AUTH_HEADER="Authorization: token ${GITHUB_TOKEN}"
 number=$(jq --raw-output .pull_request.number "$GITHUB_EVENT_PATH")
 
 curl -sSL \
-        -H "${AUTH_HEADER}" \
-        -H "${API_HEADER}" \
-        -X POST \
-        -H "Content-Type: application/json" \
-        -d "{\"labels\":[\"${addLabel}\"]}" \
-        "${URI}/repos/${GITHUB_REPOSITORY}/issues/${number}/labels"
+            -H "${AUTH_HEADER}" \
+            -H "${API_HEADER}" \
+            -X DELETE \
+            "${URI}/repos/${GITHUB_REPOSITORY}/issues/${number}/labels/${addLabel}"
 
 
 
