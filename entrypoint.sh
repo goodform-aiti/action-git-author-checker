@@ -1,5 +1,32 @@
 #!/bin/bash
 
+
+addLabel="heeeey"
+API_HEADER="Accept: application/vnd.github.v3+json"
+AUTH_HEADER="Authorization: token ${GITHUB_TOKEN}"
+number=$(jq --raw-output .pull_request.number "$GITHUB_EVENT_PATH")
+
+curl -sSL \
+        -H "${AUTH_HEADER}" \
+        -H "${API_HEADER}" \
+        -X POST \
+        -H "Content-Type: application/json" \
+        -d "{\"labels\":[\"${addLabel}\"]}" \
+        "${URI}/repos/${GITHUB_REPOSITORY}/issues/${number}/labels"
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 AUTHOR_NAME=$(git log -1 --pretty=format:"%an")
 AUTHOR_EMAIL=$(git log -1 --pretty=format:"%ae")
 IS_AUTHOR_NAME_VALID=$(echo $AUTHOR_NAME | grep -P "^.+ .+$" | wc -l)
