@@ -1,4 +1,5 @@
-FROM php:7.4-cli
+FROM alpine:3.10.3
+
 
 LABEL version="1.0"
 LABEL maintainer="Amir Alian <amir@ateli.cz>"
