@@ -1,31 +1,5 @@
 #!/bin/bash
 
-
-URI="https://api.github.com"
-addLabel="heeeey"
-API_HEADER="Accept: application/vnd.github.v3+json"
-AUTH_HEADER="Authorization: token ${GITHUB_TOKEN}"
-number=$(jq --raw-output .pull_request.number "$GITHUB_EVENT_PATH")
-
-curl -sSL \
-            -H "${AUTH_HEADER}" \
-            -H "${API_HEADER}" \
-            -X DELETE \
-            "${URI}/repos/${GITHUB_REPOSITORY}/issues/${number}/labels/${addLabel}"
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 AUTHOR_NAME=$(git log -1 --pretty=format:"%an")
 AUTHOR_EMAIL=$(git log -1 --pretty=format:"%ae")
 IS_AUTHOR_NAME_VALID=$(echo $AUTHOR_NAME | grep -P "^.+ .+$" | wc -l)
