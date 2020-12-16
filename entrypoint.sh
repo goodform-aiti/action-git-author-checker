@@ -7,7 +7,7 @@ IS_AUTHOR_EMAIL_VALID=$(echo $AUTHOR_EMAIL | grep -P "^.+@.+\..+$" | wc -l)
 
 if [[ $IS_AUTHOR_NAME_VALID == 0 ]]
 then
-  echo "The author name($AUTHOR_NAME) is invalid, right format is: NAME FAMILY"
+  echo "The author name($AUTHOR_NAME) is invalid, right format is: Name Family"
   exit 1
 fi
 
