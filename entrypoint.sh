@@ -8,6 +8,7 @@ IS_AUTHOR_EMAIL_VALID=$(echo $AUTHOR_EMAIL | grep -P "^.+@.+\..+$" | wc -l)
 if [[ $IS_AUTHOR_NAME_VALID == 0 ]]
 then
   echo "The author name($AUTHOR_NAME) is invalid, right format is: Name Family"
+  echo 'You can use following command for changing your name: git config --global user.name "FIRST_NAME LAST_NAME"' 
   exit 1
 fi
 
